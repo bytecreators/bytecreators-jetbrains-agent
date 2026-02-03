@@ -1,0 +1,9 @@
+[versions]
+kotlin = "2.0.21"
+intellijPlatform = "2.2.1"
+serialization = "2.0.21"
+
+[plugins]
+kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+intelliJPlatform = { id = "org.jetbrains.intellij.platform", version.ref = "intellijPlatform" }
+serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "serialization" }

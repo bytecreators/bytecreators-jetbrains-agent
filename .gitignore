@@ -1,0 +1,40 @@
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+.gradle-dist
+.intellijPlatform
+
+### Archive files ###
+*.rar
+*.zip
+*.tar.gz
+*.7z
+
+### Logs ###
+*.log
+
+### Local config ###
+local.properties
+.gradle/
+.kotlin/
+
+git config user.email "a.warisdev@gmail.com"
+
+

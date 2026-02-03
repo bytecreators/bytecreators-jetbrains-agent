@@ -1,0 +1,75 @@
+<idea-plugin>
+    <id>com.bytecreators.aiagent</id>
+    <name>ByteCreators AI Coding Agent</name>
+    <vendor email="support@bytecreators.com" url="https://bytecreators.com">ByteCreators</vendor>
+
+    <description><![CDATA[
+    An autonomous AI coding agent for JetBrains IDEs by ByteCreators. Use your own API keys for OpenAI, Anthropic Claude, or any OpenAI-compatible endpoint.
+
+    <h3>Features:</h3>
+    <ul>
+        <li>Autonomous code editing and generation</li>
+        <li>File reading and writing</li>
+        <li>Code search and navigation</li>
+        <li>Terminal command execution</li>
+        <li>Project context awareness</li>
+        <li>Streaming responses</li>
+    </ul>
+
+    <h3>Supported Providers:</h3>
+    <ul>
+        <li>OpenAI (GPT-4, GPT-4o, GPT-4o-mini)</li>
+        <li>Anthropic (Claude 3.5, Claude 4)</li>
+        <li>OpenAI-compatible endpoints (Ollama, LM Studio, etc.)</li>
+    </ul>
+
+    <p>Visit <a href="https://bytecreators.com">bytecreators.com</a> for more information.</p>
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <resource-bundle>messages.AgentBundle</resource-bundle>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Settings -->
+        <applicationConfigurable
+                parentId="tools"
+                instance="com.bytecreators.aiagent.settings.AgentSettingsConfigurable"
+                id="com.bytecreators.aiagent.settings.AgentSettingsConfigurable"
+                displayName="ByteCreators AI Coding Agent"/>
+
+        <applicationService
+                serviceImplementation="com.bytecreators.aiagent.settings.AgentSettings"/>
+
+        <!-- Tool Window -->
+        <toolWindow
+                id="ByteCreators AI Agent"
+                secondary="true"
+                anchor="right"
+                icon="AllIcons.Actions.Lightning"
+                factoryClass="com.bytecreators.aiagent.ui.AgentToolWindowFactory"/>
+
+        <!-- Notifications -->
+        <notificationGroup
+                id="ByteCreators AI Agent Notifications"
+                displayType="BALLOON"/>
+    </extensions>
+
+    <actions>
+        <action id="ByteCreatorsAIAgent.OpenChat"
+                class="com.bytecreators.aiagent.actions.OpenChatAction"
+                text="Open ByteCreators AI Agent Chat"
+                description="Open the ByteCreators AI coding agent chat window"
+                icon="AllIcons.Actions.Lightning">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt A"/>
+        </action>
+
+        <action id="ByteCreatorsAIAgent.AskAboutSelection"
+                class="com.bytecreators.aiagent.actions.AskAboutSelectionAction"
+                text="Ask ByteCreators AI Agent About Selection"
+                description="Ask the ByteCreators AI agent about the selected code">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
